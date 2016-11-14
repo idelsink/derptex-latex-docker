@@ -1,17 +1,18 @@
-FROM fedora:24
+from fedora:24
 
-MAINTAINER Ingmar Delsink <mail@idelsink.com>
+maintainer Ingmar Delsink <mail@idelsink.com>
+label version="1.0"
+label description="DerpTeX-LaTeX docker image"
 
-RUN dnf -y update && dnf clean all
-RUN dnf -y install \
+run dnf -y update && dnf clean all
+run dnf -y install \
 sudo \
 findutils \
 which \
 git \
 && dnf clean all
 
-# install dependencies
-RUN git clone --depth 1 https://github.com/idelsink/derptex-latex.git --recursive && \
+run git clone --depth 1 https://github.com/idelsink/derptex-latex.git --recursive && \
 ./derptex-latex/install_latex.sh YES
 
-WORKDIR /workspace
+workdir /workspace
