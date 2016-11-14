@@ -1,0 +1,24 @@
+notifications:
+    email:
+        on_success: never
+        on_failure: always
+
+sudo: required
+
+services:
+  - docker
+
+env:
+    - DISTRO=fedora24
+    secure: "knuZhG3ptnv+RzqsVFH8NMpSrEj2K5x80G5ffUmPPpHrNSAAxdhD6qWFeaFe97gTrlobMskcLhrYC9RBIdGpTXVY5ZQvs/w+IJUs53E2uugBisMpwb3sJqoEaIXwCtgNfeNJuCcPJMs5urfCgVWYHgbVlvc4OzTlvrrarRhZLbbRZPFsBn2RDtyMu2kf9u6Yu7puataj1/0EdGFvp2oi9y+tm8uqLYGvBHdUPA/nUIu/LB9ptEqSpEwMmACH9wmC1DohyBElObfEVNWQ3AOhMhtFGUOyVf1BouRbQcTcvK6gZ68sr/oKio63Hqb1tTDKvSQRRRS5uzYrUxYEOpZs4ofYD/8F8/kmAJVXv4h/p1oMgDaVSQCE1rys96d/BF/1qthds0atUhIQnlaznAIi8joLzf9TwQDnN0BRKdx1Ev/HGl8+G6ZmqDJHv34wu8a3Rx70sOdg/VHUPzQTlV0bRdzttgo9Bk3xhSMz/+VAj/rn6wAHk59DK8vTdwvXp5xESRBfvS/ad5uKEkf0lAHw1t0jjAwCRNdM0zEFoNbXjhwrVv7nK5VKUHx6c5LeS9iEkHe8Y47JOTlGC9Ph8PKN66r2bSrDG3K86SOtYzalAEIlNTgP89yVDTFn1tQhnP3KzOn32i14d0Vv0QLtUKb3u2q0Vbe/lLf0LXOeSdi7rQI=" # email
+    secure: "Xu4fJyqmqrSFLxWz1xjPkNWvJYoALb0/Pk2/lITC+PlyFMzL3ej5R7mVkvkweTqcnQqa+FGvZ1RP6L3Ev3SSQ4aoe3LY/nyzYUablLWq/2gcb0jbr/cW6BPsiGdrVz6Ht0cDYDGmiRDhb3TIS0i6GRPuG+Fb/Zz3tSxoxb0fjtTLItirleKlKHM33qadBpjxR6altV8jmIbafgUZfX811LQ+kHwGOkkwOSUs9HnHcbgKu8Z/vBtmhfvZP9Cn/qWSGHU7YsOGbbO2td3H7L50CTzsX6FMwg41kXNxthoqXIsUzxU0SM3jsU4za0k5oZAroSrmVgMMTAtLU5Y52iSJ2QoR4np1GQuj235hZN2LVbxzt+K3GnlWlgfwg4upQQrk7PfgK33EtnnYYr7hws/I6R8/GiqBlLSvpHUyd7jp2Q9mYY54m/Ki/fk3FWk/9b18U6jn1ULVZdHk3qMe150A+m1ZiFMWe0VIH5LxtF5+mhZVL4DRDNplxnjv+RtDbhvw+OBbVvwEs7ONzAUf4d22je25kjvP5/9SIt/05P7GMt8geF9WJ++dxZKFqkxd1PryfqI7F29fipat/u6aAQBFvHrCydShHz61Zgs0brT0I/PcFTWl1JAqyjSsbVl59HYk+3v3/3vVBbth6sOinSoh12b/MK4IaRiQd9ivgTNRWKE=" # username
+    secure: "ucJcy0VvPMmJ/nSpYRsnxK93Wx3LyH3ofwVd7782liQ1XmMY+FK1vA+C1AR3RMZaIT+XZYB22jfAhAOcqwHefYfSV9nH6mD4MPvINsyOOtW3h8SUVUzNnBfwKpznSczLP5gypfZHy7I5KgNlsod070M0z3elRLlze3C2SCfryYZTYyaPfKE54CGuTPbUCkbf5SL6EGugmmPK4zagbNGKoqSIouFPsN/1yYwKpQpx+j4SmGjoIi/e9Z0xsxW+Lom6LeKNToHdlnBtfx1suwbkiLm5lI/m6Q9UylRX2P5eCliUBT7nzVct8SFx1Itm8qb7at0PlTs5UXsRvz/2vkrvcBCfFqdiKgSkzgpY/c2XUwAdTR/PwZrU8xHfwkzqlSGulSguUz3Zej012m5f1tAWXvyGs6W7eGDvA/ntKoZUPN7ZZvHKHApdpDX5djjDbOo00ACU2fSIlWHoYpwmmOQTzvqe1xfMCDxmGXjKFRDmKKUiKGcrN8hyzECT3OlUxR7pSCJ9EPgwRMtsc3W2R8ekp9pnmhdouyVj0ayWT312zsZnB6Nw8gMPBIGlwhGdqaxRr56oR1oEFJ1+m2tyoDGSluy29fLnYdj9uSaQ4FhMNDFO8T8Fbln0NhMqgAzb02xMtevMBeC7IxEb40YApw+WW70KEfwWPzQQOis4IY+/Z6Q=" # password
+
+script:
+    - docker build -t idelsink/derptex-latex:$DISTRO $DISTRO/
+
+after_success:
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then
+        docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+        docker push idelsink/derptex-latex:$DISTRO;
+    fi
