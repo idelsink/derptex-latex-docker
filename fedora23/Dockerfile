@@ -2,7 +2,7 @@ from fedora:23
 
 maintainer Ingmar Delsink <mail@idelsink.com>
 label version="1.0"
-label description="DerpTeX-LaTeX docker image"
+label description="mexdown docker image"
 
 run dnf -y update && dnf clean all
 run dnf -y install \
@@ -12,7 +12,7 @@ which \
 git \
 && dnf clean all
 
-run git clone --depth 1 https://github.com/idelsink/derptex-latex.git --recursive && \
-./derptex-latex/install_latex.sh YES
+run git clone --depth 1 https://github.com/idelsink/mexdown.git --recursive && \
+./mexdown/install_latex.sh YES
 
 workdir /workspace

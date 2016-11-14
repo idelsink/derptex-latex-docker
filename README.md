@@ -1,10 +1,10 @@
-# DerpTeX-LaTeX Docker [![Build Status](https://travis-ci.org/idelsink/derptex-latex-docker.svg?branch=master)](https://travis-ci.org/idelsink/derptex-latex-docker)
+# mexdown Docker [![Build Status](https://travis-ci.org/idelsink/mexdown-docker.svg?branch=master)](https://travis-ci.org/idelsink/mexdown-docker)
 
-These dockerfiles build the [DerpTeX-LaTeX](https://github.com/idelsink/derptex-latex) docker images.
+These dockerfiles build the [mexdown](https://github.com/idelsink/mexdown) docker images.
 
 These images can be used for build servers to generate the latex files.  
 Most of the dependencies are pre-installed so that a minimum amount of time is wasted on installing.
 
-The docker images can be found at: [idelsink/derptex-latex](https://hub.docker.com/r/idelsink/derptex-latex/).
+The docker images can be found at: [idelsink/mexdown](https://hub.docker.com/r/idelsink/mexdown/).
 
-The available distributions(*tags*) can be found at: [idelsink/derptex-latex/tags](https://hub.docker.com/r/idelsink/derptex-latex/tags/)
+The available distributions(*tags*) can be found at: [idelsink/mexdown/tags](https://hub.docker.com/r/idelsink/mexdown/tags/)
