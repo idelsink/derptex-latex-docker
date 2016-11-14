@@ -23,6 +23,6 @@ script:
 
 deploy:
     provider: script
-    script: deploy/deploy.sh
+    script: scripts/deploy/docker-hub.sh
     on:
         branch: master
