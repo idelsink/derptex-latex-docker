@@ -5,12 +5,12 @@ LABEL version="1.0" \
       description="mexdown docker image"
 
 RUN dnf -y install \
-    sudo \
+    curl \
     findutils \
-    which \
-    git && \
-    git clone --depth 1 https://github.com/idelsink/mexdown.git --recursive && \
-    ./mexdown/install_latex.sh YES && \
+    sudo \
+    which && \
+    curl -s https://raw.githubusercontent.com/idelsink/mexdown/master/install_latex.sh | \
+    bash /dev/stdin YES && \
     dnf clean all
 
 WORKDIR /workspace
