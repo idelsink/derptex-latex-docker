@@ -14,6 +14,7 @@ env:
     matrix:
         - DISTRO=fedora23
         - DISTRO=fedora24
+        - DISTRO=fedora25
 
 script:
     - docker build -t $REPO:$DISTRO $DISTRO/
