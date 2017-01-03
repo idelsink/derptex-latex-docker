@@ -7,6 +7,7 @@ LABEL version="1.0" \
 RUN dnf -y install \
     curl \
     findutils \
+    git \
     sudo \
     which && \
     curl -s https://raw.githubusercontent.com/idelsink/mexdown/master/install_latex.sh | \
