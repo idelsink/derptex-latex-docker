@@ -12,7 +12,6 @@ env:
     global:
         - REPO=idelsink/mexdown
     matrix:
-        - DISTRO=fedora23
         - DISTRO=fedora24
         - DISTRO=fedora25
 
