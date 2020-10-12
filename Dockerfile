@@ -19,4 +19,4 @@ WORKDIR /workspace
 LABEL \
   org.opencontainers.image.title="Mexdown" \
   org.opencontainers.image.description="Mexdown" \
-  org.opencontainers.image.version="2.0.0" \
+  org.opencontainers.image.version="1.0.0" \

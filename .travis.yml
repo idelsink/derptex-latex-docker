@@ -8,11 +8,5 @@ sudo: required
 services:
   - docker
 
-env:
-    global:
-        - REPO=idelsink/mexdown
-    matrix:
-        - DISTRO=fedora
-
 script:
-    - docker build -t $REPO:$DISTRO $DISTRO/
+    - docker build -t idelsink/mexdown-fedora .
