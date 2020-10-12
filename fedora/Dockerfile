@@ -1,8 +1,6 @@
-FROM fedora:25
+FROM fedora:32
 
 MAINTAINER Ingmar Delsink https://github.com/idelsink
-LABEL version="1.0" \
-      description="mexdown docker image"
 
 RUN dnf -y install \
     curl \
@@ -14,4 +12,11 @@ RUN dnf -y install \
     bash /dev/stdin YES && \
     dnf clean all
 
+RUN mkdir /workspace
 WORKDIR /workspace
+
+# Define OCI annotations (https://github.com/opencontainers/image-spec/blob/master/annotations.md)
+LABEL \
+  org.opencontainers.image.title="Mexdown" \
+  org.opencontainers.image.description="Mexdown" \
+  org.opencontainers.image.version="2.0.0" \

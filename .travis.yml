@@ -12,8 +12,7 @@ env:
     global:
         - REPO=idelsink/mexdown
     matrix:
-        - DISTRO=fedora24
-        - DISTRO=fedora25
+        - DISTRO=fedora
 
 script:
     - docker build -t $REPO:$DISTRO $DISTRO/
